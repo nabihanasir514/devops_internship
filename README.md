@@ -1,6 +1,4 @@
-Here is your **clean, professional, copy-paste ready `README.md` file** 👇
 
-Just copy everything below and paste into your GitHub `README.md`.
 
 ---
 
