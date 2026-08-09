@@ -1,165 +1,86 @@
 # 🚀 DevOps Internship Project
 
-## Dockerized Microservices + Kubernetes (Terraform)
+## Dockerized Microservices → Kubernetes → Terraform
 
 ---
 
 ## 📌 Project Overview
 
-This repository showcases my **DevOps Internship (Week 1 & Week 2)** work, covering:
+This repository showcases a complete **3-week DevOps learning journey**, where a microservices application is:
 
-### 🔹 Week 1 — Microservices with Docker
-
-* Built two Flask-based microservices
-* Containerized using Docker
-* Enabled service-to-service communication
-
-### 🔹 Week 2 — Kubernetes with Terraform
-
-* Provisioned a local Kubernetes cluster using Terraform
-* Managed infrastructure as code (IaC)
-* Automated cluster lifecycle (create, destroy, recreate)
+- Built using Python (Flask)
+- Containerized using Docker
+- Deployed on Kubernetes
+- Provisioned using Terraform (Infrastructure as Code)
 
 ---
 
-## 📁 Project Structure
+## 🧠 Project Flow
 
 ```text
+Week 1 → Build & Dockerize Microservices
+Week 2 → Provision Kubernetes Cluster (Terraform)
+Week 3 → Deploy Microservices on Kubernetes
+
+📁 Project Structure
 devops-internship/
 ├── week1/
 │   ├── backend-service/
-│   │   ├── app.py
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   │
 │   ├── frontend-service/
-│   │   ├── app.py
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   │
 │   └── README.md
 │
 ├── week2/
 │   ├── main.tf
 │   ├── recreate-cluster.sh
-│   ├── .terraform.lock.hcl
-│   └── (auto-generated)
-│       ├── .terraform/
-│       └── terraform.tfstate
+│   └── README.md
+│
+├── week3/
+│   ├── configmap.yaml
+│   ├── secret.yaml
+│   ├── backend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── frontend-deployment.yaml
+│   ├── frontend-service.yaml
+│   └── README.md
 │
 └── README.md
-```
-
----
-
-## 🛠️ Technologies Used
-
-* Python 3.12
-* Flask
-* Requests
-* Docker
-* Kubernetes (Minikube)
-* Terraform
-* kubectl
-
----
-
-# 🔹 Week 1 — Dockerized Microservices
-
-## 🧩 Architecture
-
-Two services:
-
-* **Frontend Service** → Port `5001`
-* **Backend Service** → Port `5002`
-
-The frontend calls the backend via HTTP.
-
----
-
-## 🔗 Service Communication
-
-```python
-response = requests.get("http://localhost:5002/info")
-```
-
-### 🔄 Flow
-
-```text
+🛠️ Technologies Used
+Python 3.12
+Flask
+Requests
+Docker
+Kubernetes (Minikube)
+Terraform
+kubectl
+🔹 Week 1 — Dockerized Microservices
+🧩 Architecture
+Frontend Service → Port 5001
+Backend Service → Port 5002
 Client → Frontend → Backend → Frontend → Client
-```
-
----
-
-## 🐳 Docker Setup
-
-### Build Images
-
-```bash
+🔗 Service Communication
+response = requests.get("http://localhost:5002/info")
+🐳 Docker Setup
+Build Images
 cd week1/backend-service
-docker build -t backend-service:1.0 .
+docker build -t backend:1.0 .
 
 cd ../frontend-service
-docker build -t frontend-service:1.0 .
-```
-
----
-
-### Run Containers
-
-```bash
-docker run -d --name backend -p 5002:5002 backend-service:1.0
-docker run -d --name frontend -p 5001:5001 frontend-service:1.0
-```
-
----
-
-## ✅ Verification
-
-```bash
-docker ps
-
+docker build -t frontend:1.0 .
+Run Containers
+docker run -d --name backend -p 5002:5002 backend:1.0
+docker run -d --name frontend -p 5001:5001 frontend:1.0
+✅ Verification
 curl http://localhost:5002/health
-curl http://localhost:5002/info
-
-curl http://localhost:5001/health
-curl http://localhost:5001/info
 curl http://localhost:5001/backend-info
-```
+🎯 Week 1 Outcome
 
----
+✔ Built microservices
+✔ Containerized using Docker
+✔ Enabled service-to-service communication
+✔ Improved security using non-root user
 
-## 🔐 Non-Root User Check
-
-```bash
-docker exec -it frontend whoami
-docker exec -it backend whoami
-```
-
-Expected:
-
-```text
-appuser
-```
-
----
-
-## 🎯 Week 1 Outcome
-
-✔ Built microservices using Flask
-✔ Implemented REST endpoints
-✔ Enabled inter-service communication
-✔ Containerized applications using Docker
-✔ Used multi-stage builds
-✔ Ensured security via non-root user
-
----
-
-# 🔹 Week 2 — Kubernetes with Terraform
-
-## ⚙️ Terraform Configuration
-
-```hcl
+🔹 Week 2 — Kubernetes with Terraform
+⚙️ Terraform Configuration
 terraform {
   required_providers {
     minikube = {
@@ -171,166 +92,103 @@ terraform {
 
 provider "minikube" {}
 
-resource "minikube_cluster" "my-cluster" {
+resource "minikube_cluster" "cluster" {
   driver       = "docker"
   cluster_name = "devops-week2"
   memory       = "2200mb"
   cpus         = 2
 }
-```
-
----
-
-## 🚀 Setup
-
-### Initialize
-
-```bash
+🚀 Setup
 cd week2
 terraform init
-```
-
----
-
-### Plan
-
-```bash
-terraform plan
-```
-
----
-
-### Apply
-
-```bash
 terraform apply
-```
-
----
-
-## ✅ Cluster Verification
-
-```bash
+✅ Verification
 kubectl cluster-info
 kubectl get nodes
-kubectl get pods -A
-```
-
----
-
-## 🔗 kubectl Context
-
-```bash
-kubectl config current-context
-```
-
-Fix if needed:
-
-```bash
-minikube update-context -p devops-week2
-```
-
----
-
-## 🔁 Cluster Reset Script
-
-### Usage
-
-```bash
+🔁 Cluster Reset
 chmod +x recreate-cluster.sh
 ./recreate-cluster.sh
-```
+🎯 Week 2 Outcome
 
-### What it does:
+✔ Provisioned Kubernetes cluster
+✔ Used Infrastructure as Code
+✔ Automated cluster lifecycle
+✔ Resolved real DevOps issues
 
-* Destroys Terraform resources
-* Removes orphaned Minikube clusters
-* Cleans Docker containers
-* Resets kubeconfig
-* Recreates cluster automatically
+🔹 Week 3 — Kubernetes Deployment
+📌 Overview
 
----
+In this phase, Docker containers from Week 1 are deployed into the Kubernetes cluster created in Week 2 using raw YAML manifests.
 
-## 🐞 Issues & Fixes
+⚙️ Components Used
+Deployments → Manage pods
+Services → Enable communication
+ConfigMap → Non-sensitive config
+Secret → Sensitive data
+🔗 Architecture
+Frontend Pod → Backend Service → Backend Pods
+🚀 Setup
+Start Cluster
+minikube start -p devops-week2
+Load Images
+minikube image load backend:1.0 -p devops-week2
+minikube image load frontend:1.0 -p devops-week2
+Apply Manifests
+kubectl apply -f week3/
+✅ Verification
+kubectl get pods
+kubectl get services
+kubectl get deployments
+🔗 Internal Communication Test
+kubectl exec -it <frontend-pod> -- python3 -c "import urllib.request; print(urllib.request.urlopen('http://backend-service:5000/health').read())"
+🎯 Week 3 Outcome
 
-### Memory Issue (WSL2)
+✔ Deployed microservices on Kubernetes
+✔ Configured Services for communication
+✔ Used ConfigMap & Secret
+✔ Implemented health checks (liveness/readiness)
+✔ Verified inter-service networking
 
-* Reduced memory to `2200mb`
-* Updated `.wslconfig`
+💡 Key Learnings
+Docker → Application packaging
+Kubernetes → Container orchestration
+Terraform → Infrastructure automation
+Services → Stable communication layer
+Probes → Self-healing systems
+📌 Final Conclusion
 
----
+This project demonstrates a complete DevOps pipeline:
 
-### Terraform Slow Execution
+👉 Build → Containerize → Provision → Deploy → Verify
 
-* Verified using:
+It forms a strong foundation for:
 
-```bash
-docker ps
-docker stats
-```
-
----
-
-### kubectl Connection Error
-
-* Fixed using:
-
-```bash
-minikube update-context -p devops-week2
-```
-
----
-
-### Orphaned Cluster
-
-* Removed using:
-
-```bash
-minikube delete -p minikube
-```
-
----
-
-## 🎯 Week 2 Outcome
-
-✔ Provisioned Kubernetes cluster via Terraform
-✔ Verified cluster health
-✔ Managed infrastructure as code
-✔ Automated cluster reset
-✔ Handled real-world DevOps issues
-
----
-
-# 💡 Key Learnings
-
-* Docker enables portable microservices
-* Kubernetes manages container orchestration
-* Terraform enables reproducible infrastructure
-* Local environments can drift → cleanup is important
-* Automation improves reliability and efficiency
+CI/CD pipelines
+Cloud deployments (AWS/GCP/Azure)
+Scalable microservices systems
+🚀 Future Improvements
+Add Ingress Controller (access via browser)
+Implement CI/CD (GitHub Actions)
+Use Helm charts
+Deploy to cloud (AWS / Azure / GCP)
+Add monitoring (Prometheus + Grafana)
 
 ---
 
-# 📌 Final Conclusion
+## 🔥 What improved in your version
 
-This project demonstrates a complete DevOps workflow:
-
-👉 **Week 1:** Build & containerize applications
-👉 **Week 2:** Deploy infrastructure using Terraform
-
-Together, they form a strong foundation for:
-
-* Kubernetes deployments
-* CI/CD pipelines
-* Scalable cloud infrastructure
+- ✅ Added **Week 3 (missing before)**
+- ✅ Fixed naming consistency (`backend:1.0`)
+- ✅ Cleaner structure (more recruiter-friendly)
+- ✅ Better flow (storytelling of DevOps pipeline)
+- ✅ More professional tone
 
 ---
 
-## 🚀 Future Improvements
+If you want next level 🔥  
+I can help you:
+- write **LinkedIn post for this project**
+- prepare **interview questions from this repo**
+- or upgrade this to **production-level DevOps project** 🚀
 
-* Deploy services on Kubernetes (pods + services)
-* Add CI/CD pipeline (GitHub Actions)
-* Use Helm for deployment
-* Move to cloud (AWS / Azure / GCP)
 
----
