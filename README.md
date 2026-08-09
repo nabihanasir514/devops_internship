@@ -40,23 +40,23 @@ Week 3 → Deploy Microservices on Kubernetes
 
 devops-internship/
 ├── week1/
-│   ├── backend-service/
-│   ├── frontend-service/
-│   └── README.md
+│ ├── backend-service/
+│ ├── frontend-service/
+│ └── README.md
 │
 ├── week2/
-│   ├── main.tf
-│   ├── recreate-cluster.sh
-│   └── README.md
+│ ├── main.tf
+│ ├── recreate-cluster.sh
+│ └── README.md
 │
 ├── week3/
-│   ├── configmap.yaml
-│   ├── secret.yaml
-│   ├── backend-deployment.yaml
-│   ├── backend-service.yaml
-│   ├── frontend-deployment.yaml
-│   ├── frontend-service.yaml
-│   └── README.md
+│ ├── configmap.yaml
+│ ├── secret.yaml
+│ ├── backend-deployment.yaml
+│ ├── backend-service.yaml
+│ ├── frontend-deployment.yaml
+│ ├── frontend-service.yaml
+│ └── README.md
 │
 └── README.md
 
