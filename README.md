@@ -1,8 +1,3 @@
-
-
----
-
-```markdown
 # 🚀 DevOps Internship Project
 
 ## Dockerized Microservices → Kubernetes → Terraform
@@ -23,11 +18,9 @@ This repository showcases a complete **3-week DevOps learning journey**, where a
 ## 🧠 Project Flow
 
 ```
-
 Week 1 → Build & Dockerize Microservices
 Week 2 → Provision Kubernetes Cluster (Terraform)
 Week 3 → Deploy Microservices on Kubernetes
-
 ```
 
 ---
@@ -35,42 +28,40 @@ Week 3 → Deploy Microservices on Kubernetes
 ## 📁 Project Structure
 
 ```
-
 devops-internship/
 ├── week1/
-│ ├── backend-service/
-│ ├── frontend-service/
-│ └── README.md
+│   ├── backend-service/
+│   ├── frontend-service/
+│   └── README.md
 │
 ├── week2/
-│ ├── main.tf
-│ ├── recreate-cluster.sh
-│ └── README.md
+│   ├── main.tf
+│   ├── recreate-cluster.sh
+│   └── README.md
 │
 ├── week3/
-│ ├── configmap.yaml
-│ ├── secret.yaml
-│ ├── backend-deployment.yaml
-│ ├── backend-service.yaml
-│ ├── frontend-deployment.yaml
-│ ├── frontend-service.yaml
-│ └── README.md
+│   ├── configmap.yaml
+│   ├── secret.yaml
+│   ├── backend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── frontend-deployment.yaml
+│   ├── frontend-service.yaml
+│   └── README.md
 │
 └── README.md
-
 ```
 
 ---
 
 ## 🛠️ Technologies Used
 
-- Python 3.12  
-- Flask  
-- Requests  
-- Docker  
-- Kubernetes (Minikube)  
-- Terraform  
-- kubectl  
+- Python 3.12
+- Flask
+- Requests
+- Docker
+- Kubernetes (Minikube)
+- Terraform
+- kubectl
 
 ---
 
@@ -78,21 +69,19 @@ devops-internship/
 
 ### 🧩 Architecture
 
-- Frontend Service → Port 5001  
-- Backend Service → Port 5002  
+- Frontend Service → Port 5001
+- Backend Service → Port 5002
 
 Flow:
 ```
-
 Client → Frontend → Backend → Frontend → Client
-
-````
+```
 
 ### 🔗 Service Communication
 
 ```python
 response = requests.get("http://localhost:5002/info")
-````
+```
 
 ### 🐳 Docker Setup
 
@@ -122,10 +111,10 @@ curl http://localhost:5001/backend-info
 
 ### 🎯 Outcome
 
-* ✔ Built microservices
-* ✔ Containerized using Docker
-* ✔ Enabled service-to-service communication
-* ✔ Improved security using non-root user
+- ✔ Built microservices
+- ✔ Containerized using Docker
+- ✔ Enabled service-to-service communication
+- ✔ Improved security using non-root user
 
 ---
 
@@ -177,10 +166,10 @@ chmod +x recreate-cluster.sh
 
 ### 🎯 Outcome
 
-* ✔ Provisioned Kubernetes cluster
-* ✔ Used Infrastructure as Code
-* ✔ Automated cluster lifecycle
-* ✔ Resolved real DevOps issues
+- ✔ Provisioned Kubernetes cluster
+- ✔ Used Infrastructure as Code
+- ✔ Automated cluster lifecycle
+- ✔ Resolved real DevOps issues
 
 ---
 
@@ -192,10 +181,10 @@ Deploy Docker containers into Kubernetes using YAML manifests.
 
 ### ⚙️ Components Used
 
-* Deployments → Manage pods
-* Services → Enable communication
-* ConfigMap → Non-sensitive config
-* Secret → Sensitive data
+- Deployments → Manage pods
+- Services → Enable communication
+- ConfigMap → Non-sensitive config
+- Secret → Sensitive data
 
 ### 🔗 Architecture
 
@@ -240,21 +229,21 @@ kubectl exec -it <frontend-pod> -- python3 -c "import urllib.request; print(urll
 
 ### 🎯 Outcome
 
-* ✔ Deployed microservices on Kubernetes
-* ✔ Configured Services for communication
-* ✔ Used ConfigMap & Secret
-* ✔ Implemented health checks
-* ✔ Verified inter-service networking
+- ✔ Deployed microservices on Kubernetes
+- ✔ Configured Services for communication
+- ✔ Used ConfigMap & Secret
+- ✔ Implemented health checks
+- ✔ Verified inter-service networking
 
 ---
 
 ## 💡 Key Learnings
 
-* Docker → Application packaging
-* Kubernetes → Container orchestration
-* Terraform → Infrastructure automation
-* Services → Stable communication layer
-* Probes → Self-healing systems
+- Docker → Application packaging
+- Kubernetes → Container orchestration
+- Terraform → Infrastructure automation
+- Services → Stable communication layer
+- Probes → Self-healing systems
 
 ---
 
@@ -270,32 +259,12 @@ Build → Containerize → Provision → Deploy → Verify
 
 ## 🚀 Future Improvements
 
-* Add Ingress Controller
-* Implement CI/CD (GitHub Actions)
-* Use Helm charts
-* Deploy to Cloud (AWS / Azure / GCP)
-* Add Monitoring (Prometheus + Grafana)
+- Add Ingress Controller
+- Implement CI/CD (GitHub Actions)
+- Use Helm charts
+- Deploy to Cloud (AWS / Azure / GCP)
+- Add Monitoring (Prometheus + Grafana)
 
 ---
 
 ## ⭐ If you like this project, give it a star!
-
-```
-
----
-
-### ✅ You're done
-Just:
-1. Open your GitHub repo  
-2. Edit `README.md`  
-3. Paste this  
-4. Commit  
-
----
-
-If you want next level 🔥  
-I can:
-- turn this into a **resume project description**
-- create a **LinkedIn post**
-- or add **CI/CD pipeline (GitHub Actions)** 🚀
-```
