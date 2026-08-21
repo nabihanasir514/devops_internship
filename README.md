@@ -1,4 +1,3 @@
-Absolutely. I’ll keep your existing **Weeks 1–3 structure and wording**, and add **Week 4 — Helm** based on the Week 4 work in the uploaded material. The Week 4 section will cover the Helm chart structure, installation, upgrade, rollback, and troubleshooting. 
 
 # DevOps Internship Project
 
